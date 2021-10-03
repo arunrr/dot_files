@@ -1,0 +1,40 @@
+#! /bin/sh
+
+# autostart
+festival --tts ~/.config/bspwm/welcome_msg
+xsetroot -cursor_name left_ptr
+picom -f &
+nitrogen --restore &
+
+# Personal scripts
+$HOME/.config/polybar/launch.sh
+$HOME/.config/bspwm/emote_launch.sh
+$HOME/.config/bspwm/redshift_launch.sh
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+bspc monitor -d I II III IV V VI #VII VIII IX X
+
+bspc config border_width         2
+bspc config window_gap          12
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a Gimp desktop='^5' state=floating follow=on
+bspc rule -a Brave-browser desktop='^1'
+bspc rule -a libreoffice-startcenter desktop='^3' follow=on
+bspc rule -a mpv desktop='^4' state=floating follow=on
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
+bspc rule -a Pavucontrol state=floating
+bspc rule -a "Tor Browser" desktop='^6' state=floating
+
+# Dracula theme
+bspc config normal_border_color "#44475a"
+#bspc config active_border_color "#bd93f9"
+#bspc config focused_border_color "#ff79c6"
+bspc config presel_feedback_color "#6272a4"
+bspc config active_border_color "#6272a4"
+bspc config focused_border_color "#8be9fd"
