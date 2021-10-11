@@ -1,12 +1,13 @@
 #! /bin/sh
 
 # autostart
-festival --tts ~/.config/bspwm/welcome_msg
 xsetroot -cursor_name left_ptr
 picom -f &
 nitrogen --restore &
+festival --tts ~/.config/bspwm/welcome_msg
+#redshift &
+#pcloud &
 
-# Personal scripts
 $HOME/.config/polybar/launch.sh
 $HOME/.config/bspwm/emote_launch.sh
 $HOME/.config/bspwm/redshift_launch.sh
